@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 import useLogout from "../Utils/UseLogout"; 
 
-
 const NavBar = ()=> {
   const user = useSelector((state)=> state.user);
   const logout = useLogout();
@@ -19,22 +18,29 @@ const NavBar = ()=> {
         {user && (<div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={user ? user.photoUrl : '/assets/logo.png'} />
         </div>)}
         {!user && (<div className="h-10 rounded"> </div>)}
       </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
-          <Link className="justify-between" to="/feed" >
-            Profile
-            <span className="badge">New</span>
-          </Link>
-        </li>
-        <li><Link>Settings</Link></li>
-        <li onClick={logout}><Link to="/login">Logout</Link></li>
-      </ul>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              <li>
+                <Link className="justify-between" to="/profile" >
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link className="justify-between" to="/feed" >
+                  feed
+                </Link>
+              </li>
+              <li><Link to="/updatePeofile">Update Profile</Link></li>
+              <li ><Link to="/myConnections">My connections</Link></li>
+              <li ><Link to="/newConnections">New requests</Link></li>
+              {/* <li ><Link to="/signup">New requests</Link></li> */}
+              <li onClick={logout}><Link to="/login">Logout</Link></li>
+            </ul>
     </div>
   </div>
 </div>
