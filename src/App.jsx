@@ -1,12 +1,36 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/Auth/Login';
+import Body from './components/body';
+import {Provider} from 'react-redux';
+import appStore from './Utils/appStore';
+import Feed from './components/Users/Feed';
+import {Toaster} from 'react-hot-toast';
+import UpdateProfile from './components/Auth/UpdateProfile';
+import Connections from './components/Connections/connections';
+import Connectionsreceived from './components/Connections/connectionsReceived';
+import Profile from './components/Users/Profile.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Hello world</h1>
+  <Provider store={appStore}>
+     <Toaster position="top-right" reverseOrder={false} />
+   <BrowserRouter basename='/'>
+    <Routes>
+      <Route path='/' element={<Body/>}>
+         <Route path="/login" element={<Login/>}></Route>
+         <Route path='/feed' element={<Feed/>}></Route>
+         <Route path='/updatePeofile' element={<UpdateProfile/>}></Route>
+         <Route path='/requests' element={<UpdateProfile/>}></Route>
+         <Route path='/myConnections' element={<Connections/>}></Route>
+         <Route path='/newConnections' element={<Connectionsreceived/>}></Route>
+         <Route path='/profile' element={<Profile/>}></Route>
+      </Route>
+    </Routes>
+   </BrowserRouter>
+  </Provider>
     </>
   )
 }
