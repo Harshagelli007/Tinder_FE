@@ -1,4 +1,4 @@
-import NavBar from "./navBar";
+import NavBar from "./NavBar";
 import { Outlet, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 // import appStore from "../Utils/appStore";
