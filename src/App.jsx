@@ -19,7 +19,7 @@ function App() {
      <Toaster position="top-right" reverseOrder={false} />
    <BrowserRouter basename='/'>
     <Routes>
-      <Route path='/' element={<Body/>}>
+      <Route path='/' element={<Login/>}>
          <Route path="/login" element={<Login/>}></Route>
          <Route path='/feed' element={<Feed/>}></Route>
          <Route path='/updatePeofile' element={<UpdateProfile/>}></Route>
